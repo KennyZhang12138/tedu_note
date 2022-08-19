@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+
+{% if request.session.username %}
+    <P>
+        Welcome {{ request.session.username }}
+    </P>
+    <P>
+        <a href="/user/logout">Log out</a>
+    </P>
+    <p>
+        <a href="/note/all">Enter my notebook</a>
+    </p>
+{% else %}
+    {% if request.COOKIES.username %}
+        <P>
+            Welcome {{ request.COOKIES.username }}
+        </P>
+        <P>
+            <a href="/user/logout">Log out</a>
+        </P>
+        <p>
+            <a href="/note/all">Enter my notebook</a>
+        </p>
+    {% else %}
+        <p>
+            <a href="/user/login">Login</a>
+        </p>
+        <P>
+            <a href="/user/reg">Register</a>
+        </P>
+    {% endif %}
+
+{% endif %}
+
+</body>
+</html>
